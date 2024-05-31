@@ -19,11 +19,13 @@ client.on('error', (error) => {
 
 // Función para publicar un mensaje en el broker MQTT
 function publishMessage(message) {
-  client.publish(topic, message, (error) => {
+  // Asegúrate de que 'message' es una cadena
+  const messageString = String(message); 
+  client.publish(topic, messageString, (error) => {
     if (error) {
-      console.error('Error al publicar el mensaje:', error);
+      console.error('Error publishing message:', error);
     } else {
-      console.log('Mensaje publicado:', message);
+      console.log('Message published:', messageString);
     }
   });
 }

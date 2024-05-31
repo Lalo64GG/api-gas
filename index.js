@@ -21,6 +21,10 @@ app.use(express.json());
 // Ruta para enviar datos al broker MQTT
 app.post("/sendData", (req, res) => {
   const { message } = req.body;
+  console.log(message);
+
+  message.toString()
+
   if (!message) {
     return res.status(400).json({ error: "Mensaje no proporcionado" });
   }
